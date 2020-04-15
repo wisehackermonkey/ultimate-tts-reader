@@ -8,8 +8,12 @@ oranbusiness@gmail.com
 ```
 
 # how to install 
-pip install -r requirements.txt
 
+```
+git clone https://github.com/wisehackermonkey/ultimate-tts-reader.git
+cd ultimate-tts-reader
+pip install -r requirements.txt
+```
 
 # how to run 
 
@@ -21,4 +25,5 @@ python ./main.py
 ```
 copy something to the clipboard
 press 'insert' on the keyboard
+the computer should read the text to you!
 ```
