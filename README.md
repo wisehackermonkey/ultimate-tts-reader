@@ -27,3 +27,13 @@ copy something to the clipboard
 press 'insert' on the keyboard
 the computer should read the text to you!
 ```
+
+
+## Improvements
+- change stop key to other key combination or use TK to quit
+- change stop key to fn + insert
+- slow down the voice
+- catch KeyboardInterrupt graceful shutdown
+- Copy selected text to clipboard or copy selected text and read it
+- dependence injection
+
