@@ -39,3 +39,16 @@ the computer should read the text to you!
 - Copy selected text to clipboard or copy selected text and read it
 - dependence injection
 - change voice
+
+
+## Links
+```
+tts
+https://pyttsx3.readthedocs.io/en/latest/engine.html#examples
+
+keyboard
+https://pynput.readthedocs.io/en/latest/keyboard.html
+
+posible solution to pause key
+https://github.com/nateshmbhat/pyttsx3/issues/35
+```
