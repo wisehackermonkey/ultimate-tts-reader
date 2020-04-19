@@ -6,12 +6,12 @@ github.com/wisehackermonkey
 oranbusiness@gmail.com
 20200415
 ```
-[![Screenshot_1](https://i.imgur.com/lhVK1NM.jpg)
+![Screenshot_1](https://i.imgur.com/lhVK1NM.jpg)
 # Install
 
 > Prebuilt windows binaries are avaiable under releases 
 
-### ultimate-tts-reader/releases](https://github.com/wisehackermonkey/ultimate-tts-reader/releases)
+### [ultimate-tts-reader/releases](https://github.com/wisehackermonkey/ultimate-tts-reader/releases)
 
 # how to install (source)
 
