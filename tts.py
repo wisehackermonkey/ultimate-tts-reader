@@ -24,12 +24,12 @@ class TTS():
     def __init__(self):
         self.engine = pyttsx3.init()
 
-        self.engine.connect('started-word',self. onWord)
+        # self.engine.connect('started-word',self. onWord)
 
         self.engine.startLoop(False)
         self.listener = keyboard.Listener(
                                     on_press=self.on_press,
-                                    on_release=self.on_release,
+                                    # on_release=self.on_release,
                                     on_error=self.onError
                                     )
         self.listener.start()
@@ -50,28 +50,28 @@ class TTS():
                     # print("Copy functionality unavailable!") 
                     # return
                 self.engine.say(pyperclip.paste())
-            if key == keyboard.Key.esc:
-                print("Pressed escape")
-                self.engine.stop()
+            # if key == keyboard.Key.esc:
+                # print("Pressed escape")
+                # self.engine.stop()
         except AttributeError:
             print('special key {0} pressed'.format(
                 key))
     # when kill key is pressed the event handler is killed.
     # this is done by returning "False"
-    def on_release(self,key):
-        # if key == keyboard.Key.esc:
-    #         # Stop listener
-        print("stopped the listener")
-            # self.engine.stop()
-            # return False
+    # def on_release(self,key):
+    #     # if key == keyboard.Key.esc:
+    # #         # Stop listener
+    #     print("stopped the listener")
+    #         # self.engine.stop()
+    #         # return False
 
-    def onWord(self,name, location, length):
-        print('word', name, location, length)
-        #     print ('word', name, location, length)
-        # if keyboard.is_pressed("esc"):
-            # print("Stop")
-            # engine.stop()
-            # keyboard.Listener.stop
-        return False
+    # def onWord(self,name, location, length):
+    #     print('word', name, location, length)
+    #     #     print ('word', name, location, length)
+    #     if keyboard.is_pressed("esc"):
+    #         print("Stop")
+    #         engine.stop()
+    #         # keyboard.Listener.stop
+    #     return False
     def onError(self):
         print("error occurred")

@@ -5,7 +5,7 @@ from tts import TTS
 # windows containing play and quit buttons
 from gui import App
 
-
+import sys
 
 app = App()
 tts = TTS()
@@ -19,4 +19,5 @@ while app.is_alive():
     # time.sleep(1)
     # print(app.is_alive())
     tts.iterate()
+sys.exit()
 tts.endloop()

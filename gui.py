@@ -38,9 +38,10 @@ class App(threading.Thread):
         label = tk.Label(self.root, text="Ultimate TTS Reader")
         label.pack()
 
-        # Play button
-        button = tk.Button(self.root, justify="center", text="play", command=self.play_tts)
-        button.pack()
+        # TODO add 
+        # # Play button
+        # button = tk.Button(self.root, justify="center", text="play", command=self.play_tts)
+        # button.pack()
 
         # Quit button
         self.quit = tk.Button(self.root, text="Quit", command=self.root.quit)
