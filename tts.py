@@ -21,8 +21,11 @@ import pyperclip
 
 
 class TTS():
-    def __init__(self):
+    def __init__(self,speed=None):
         self.engine = pyttsx3.init()
+
+        if speed:
+            self.engine.setProperty('rate', speed)
 
         self.engine.startLoop(False)
         self.listener = keyboard.Listener(
@@ -41,11 +44,13 @@ class TTS():
     # goal is to read the clipboard when the insert key is pressed
     def on_press(self,key):
         try:
+            # print( str(repr(key)) == '\x03')
+
             if key == key.insert:
                 print("reading clipboard")
                 self.engine.say(pyperclip.paste())
-
         except AttributeError:
             print(f'special key {key} pressed')
+            
     def onError(self):
         print("error occurred")
