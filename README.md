@@ -6,8 +6,14 @@ github.com/wisehackermonkey
 oranbusiness@gmail.com
 20200415
 ```
+[![Screenshot_1](https://i.imgur.com/lhVK1NM.jpg)
+# Install
 
-# how to install 
+> Prebuilt windows binaries are avaiable under releases 
+
+### ultimate-tts-reader/releases](https://github.com/wisehackermonkey/ultimate-tts-reader/releases)
+
+# how to install (source)
 
 ```
 git clone https://github.com/wisehackermonkey/ultimate-tts-reader.git
@@ -39,20 +45,27 @@ cd /path/to/project
 ```
 ### Simple build
 ```
-pyinstaller --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --noconsole --onefile app.py
+pyinstaller --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --noconsole --onefile ultimate-tts-reader.py
 ```
 ### clean build 
 ```
-pyinstaller --noconsole --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile app.py 
+pyinstaller --noconsole --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile ultimate-tts-reader.py 
 ```
 ### Advanced (windows powershell) Build, move exe  to to windows folder, includes moving of build files to ./builds 
 ```
 add move to windows folder 
 NOTE mv -force overwrites the exe (and is a powershell command)
 
-> pyinstaller --noconsole --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile app.py ; mv -force ${PWD}/builds/dist/app.exe ${PWD}/windows/app.exe
+> pyinstaller --noconsole --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile ultimate-tts-reader.py ; mv -force ${PWD}/builds/dist/ultimate-tts-reader.exe ${PWD}/windows/ultimate-tts-reader.exe
 ```
 
+### Advanced (plus zip) (windows powershell) 
+```
+> pyinstaller --noconsole --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile ultimate-tts-reader.py ; mv -force ${PWD}/builds/dist/ultimate-tts-reader.exe ${PWD}/windows/ultimate-tts-reader.exe ;
+Compress-Archive -force -Path ${PWD}/windows/ultimate-tts-reader.exe -DestinationPath ${PWD}/windows/ultimate-tts-reader_windows_${Get-Date -Format "yyyyMMdd"}.zip
+
+
+```
 
 ## Improvements
 - pause key/button
@@ -78,4 +91,20 @@ https://pynput.readthedocs.io/en/latest/keyboard.html
 
 posible solution to pause key
 https://github.com/nateshmbhat/pyttsx3/issues/35
+
+Tkinter gui
+https://docs.python.org/3/library/tkinter.html
+
+Pyinstaller
+https://pyinstaller.readthedocs.io/en/stable/usage.html
+
+pyinstaller fix output file destination
+Python: how to specify output folders in Pyinstaller .spec file
+https://stackoverflow.com/questions/37319911/python-how-to-specify-output-folders-in-pyinstaller-spec-file
+
+pyinstaller fix pyttsx3 not found error
+> pyinstaller --hidden-import=pyttsx3.drivers song_dl.py
+
+https://stackoverflow.com/questions/58133083/modulenotfounderror-no-module-named-pyttsx3-drivers-file-compiled-with-pyins
+
 ```
