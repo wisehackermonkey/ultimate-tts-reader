@@ -29,16 +29,43 @@ the computer should read the text to you!
 ```
 
 
+## How to build windows exe
+### install pyinstaller 
+```
+>pip install pyinstaller 
+```
+```
+cd /path/to/project
+```
+### Simple build
+```
+pyinstaller --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --noconsole --onefile app.py
+```
+### clean build 
+```
+pyinstaller --noconsole --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile app.py 
+```
+### Advanced (windows powershell) Build, move exe  to to windows folder, includes moving of build files to ./builds 
+```
+add move to windows folder 
+NOTE mv -force overwrites the exe (and is a powershell command)
+
+> pyinstaller --noconsole --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile app.py ; mv -force ${PWD}/builds/dist/app.exe ${PWD}/windows/app.exe
+```
+
+
 ## Improvements
-- pause key
+- pause key/button
 - fix quit on escape
-- change stop key to other key combination or use TK to quit
-- change stop key to fn + insert
+- ~~change stop use TK to quit~~
+- ~~change stop key to fn + insert~~
 - slow down the voice
 - catch KeyboardInterrupt graceful shutdown
 - Copy selected text to clipboard or copy selected text and read it
 - dependence injection
 - change voice
+- ~~gui mvp~~
+
 
 
 ## Links
