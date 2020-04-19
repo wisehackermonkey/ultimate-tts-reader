@@ -1,3 +1,9 @@
+# visual part of the app shows window with play and quit buttons
+# by oran collins
+# github.com/wisehackermonkey
+# oranbusiness@gmail.com
+# 20200419
+
 import tkinter as tk
 import threading
 
@@ -42,17 +48,3 @@ class App(threading.Thread):
 
         # Start of threaded main tkinter loop
         self.root.mainloop()
-
-
-app = App()
-
-print("Ultimate tts reader:")
-print("press escape to quit program <ESC>")
-
-import time
-
-# external loop not part of tkinker thread
-# loop exits when the tkinter windows is closed
-while app.is_alive():
-    time.sleep(1)
-    print(app.is_alive())
