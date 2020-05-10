@@ -67,6 +67,7 @@ NOTE mv -force overwrites the exe (and is a powershell command)
 ```
 
 ## Improvements
+- start minimized 
 - pause key/button
 - fix quit on escape
 - ~~change stop use TK to quit~~
