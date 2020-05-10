@@ -68,6 +68,7 @@ NOTE mv -force overwrites the exe (and is a powershell command)
 
 ## Improvements
 - ~~pause key/button~~
+- start minimized ultimate tts reader
 - fix quit on escape
 - ~~change stop use TK to quit~~
 - ~~change stop key to fn + insert~~
