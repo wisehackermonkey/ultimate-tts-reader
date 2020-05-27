@@ -67,17 +67,21 @@ NOTE mv -force overwrites the exe (and is a powershell command)
 ```
 
 ## Improvements
+- ~~gui mvp~~
+- ~~change stop use TK to quit~~
+- ~~change stop key to fn + insert~~
 - start minimized 
 - pause key/button
 - fix quit on escape
-- ~~change stop use TK to quit~~
-- ~~change stop key to fn + insert~~
-- slow down the voice
+- voice
+ - slow down the voice
+ - change voice
 - catch KeyboardInterrupt graceful shutdown
-- Copy selected text to clipboard or copy selected text and read it
-- dependence injection
-- change voice
-- ~~gui mvp~~
+- ~~Copy selected text to clipboard or copy selected text and read it~~
+- ~~dependence injection~~
+
+- auto-update
+- add zip to releases page github
 
 
 

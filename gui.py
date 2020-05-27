@@ -6,6 +6,14 @@
 
 import tkinter as tk
 import threading
+import sys
+import os
+
+# location of server address, app version number
+from client_config import ClientConfig
+
+# download and update app to new version
+# from update import check_for_update
 
 # class uses threading to isolate 
 # the tkinter mainloop from my tts loop
@@ -20,6 +28,16 @@ class App(threading.Thread):
 
     def play_tts(self):
         print("Playing")
+
+    def hello(self):
+        print("works")
+    def restart(self):
+        """Restarts the current program.
+        Note: this function does not return. Any cleanup action (like
+        saving data) must be done before calling this function."""
+        print("Stopping")
+        python = sys.executable
+        os.execl(python, python, * sys.argv)
 
     def run(self):
         self.root = tk.Tk()
@@ -38,10 +56,32 @@ class App(threading.Thread):
         label = tk.Label(self.root, text="Ultimate TTS Reader")
         label.pack()
 
-        # TODO add 
-        # # Play button
-        # button = tk.Button(self.root, justify="center", text="play", command=self.play_tts)
-        # button.pack()
+        # TODO add pause button
+
+        # Stop button
+        button = tk.Button(self.root, justify="center", text="Stop", command=self.restart)
+        button.pack()
+
+
+        # Update app button
+        self.menubar = tk.Menu(self.root)
+
+        self.filemenu = tk.Menu(self.root,tearoff=0)
+
+        # self.menubar.add_command(label="Update", command=self.hello)
+        # self.menubar.add_separator()
+
+        # self.menubar.add_command(label="Quit!", command=self.hello)
+        
+
+        self.filemenu.add_command(label="Update", command=self.hello)
+        self.filemenu.add_command(label="Exit", command=self.close_window)
+
+        self.menubar.add_cascade(label="Options", menu=self.filemenu)
+
+
+        # display the menu
+        self.root.config(menu=self.menubar)
 
         # Quit button
         self.quit = tk.Button(self.root, text="Quit", command=self.root.quit)

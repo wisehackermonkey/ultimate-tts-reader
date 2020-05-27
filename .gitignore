@@ -124,4 +124,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-keys/
+keypack.pyu
+.pyupdater
+pyu.log
+pyu-data

@@ -5,7 +5,13 @@ from tts import TTS
 # windows containing play and quit buttons
 from gui import App
 
+
+
 import sys
+# added to fix a anonying error with pyinstaller 
+import pkg_resources.py2_warn
+
+
 
 app = App()
 tts = TTS()
