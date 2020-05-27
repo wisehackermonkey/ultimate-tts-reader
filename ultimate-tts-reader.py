@@ -1,5 +1,6 @@
 # class handles keyboard input and reading of the text
 from tts import TTS
+import pkg_resources.py2_warn
 
 # custom gui script for generating tkinter
 # windows containing play and quit buttons
@@ -9,7 +10,7 @@ from gui import App
 
 import sys
 # added to fix a anonying error with pyinstaller 
-import pkg_resources.py2_warn
+#EX: "[123972] Failed to execute script pyi_rth_win32comgenpy"
 
 
 

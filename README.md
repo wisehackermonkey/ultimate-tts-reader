@@ -64,6 +64,31 @@ NOTE mv -force overwrites the exe (and is a powershell command)
 > pyinstaller --noconsole --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile ultimate-tts-reader.py ; mv -force ${PWD}/builds/dist/ultimate-tts-reader.exe ${PWD}/windows/ultimate-tts-reader.exe ; $date = Get-Date -Format "yyyyMMdd"; Compress-Archive -force -Path ${PWD}/windows/ultimate-tts-reader.exe -DestinationPath ${PWD}/windows/ultimate-tts-reader_windows_${date}.zip
 
 
+### Auto update setup
+```
+pyupdater init 
+    copy key 'keypack.pyu'
+pyupdater keys -i  
+pyupdater settings --plugin scp    
+```
+### Auto update build and push
+```bash
+
+on remote server
+(TESTING)
+sudo docker run --rm -it -p 7777:8080 --name simple -v /root/version-ultimate-tts-reader:/var/www:ro trinitronx/python-simplehttpserver
+
+(deployment)
+sudo docker run -d --restart=always -p 7777:8080 --name static-serve -v /root/version-ultimate-tts-reader:/var/www:ro trinitronx/python-simplehttpserver
+
+
+pyupdater build --onefile --hidden-import="pkg_resources.py2_warn"  --app-version=1.3.0 ultimate-tts-reader.py
+pyupdater build --onefile --hidden-import="pypiwin32"  --app-version=1.3.0 ultimate-tts-reader.py
+pyupdater build --onefile --hidden-import="win32api" --hidden-import="pkg_resources.py2_warn" --app-version=1.3.0 ultimate-tts-reader.py
+pyupdater pkg --process
+pyupdater pkg --sign
+```
+
 ```
 
 ## Improvements

@@ -9,7 +9,6 @@
 
 import logging
 
-logging.basicConfig(level=logging.DEBUG)
 
 # location of server address, app version number
 from client_config import ClientConfig
@@ -20,6 +19,8 @@ from pyupdater.client import Client, AppUpdate, LibUpdate
 # goes to webserver grabs newest version of app and
 # replaces the exe with the new one
 def check_for_update():
+    logging.basicConfig(level=logging.DEBUG)
+
     client = Client(ClientConfig(), refresh=True)
     app_update = client.update_check(ClientConfig.APP_NAME, ClientConfig.APP_VERSION)
 

@@ -13,7 +13,7 @@ import os
 from client_config import ClientConfig
 
 # download and update app to new version
-# from update import check_for_update
+import update 
 
 # class uses threading to isolate 
 # the tkinter mainloop from my tts loop
@@ -29,8 +29,6 @@ class App(threading.Thread):
     def play_tts(self):
         print("Playing")
 
-    def hello(self):
-        print("works")
     def restart(self):
         """Restarts the current program.
         Note: this function does not return. Any cleanup action (like
@@ -68,13 +66,8 @@ class App(threading.Thread):
 
         self.filemenu = tk.Menu(self.root,tearoff=0)
 
-        # self.menubar.add_command(label="Update", command=self.hello)
-        # self.menubar.add_separator()
 
-        # self.menubar.add_command(label="Quit!", command=self.hello)
-        
-
-        self.filemenu.add_command(label="Update", command=self.hello)
+        self.filemenu.add_command(label="Update", command=update.check_for_update)
         self.filemenu.add_command(label="Exit", command=self.close_window)
 
         self.menubar.add_cascade(label="Options", menu=self.filemenu)
