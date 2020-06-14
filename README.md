@@ -137,3 +137,6 @@ pyinstaller fix pyttsx3 not found error
 https://stackoverflow.com/questions/58133083/modulenotfounderror-no-module-named-pyttsx3-drivers-file-compiled-with-pyins
 
 ```
+
+<script type="text/javascript" src="https://www.free-counters.org/count/5vlj"></script><br>
+ <a href='http://www.counter-zaehler.de'>counter skript</a> <script type='text/javascript' src='https://www.whomania.com/ctr?id=67fe581f5c91eee6e3062f6fdd9aa156c648c349'></script>
