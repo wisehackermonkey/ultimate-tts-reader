@@ -33,6 +33,13 @@ copy something to the clipboard
 press 'insert' on the keyboard
 the computer should read the text to you!
 ```
+# Dev Log updates
+
+# Update (20200708)
+### Improvements 
+![](./Screenshot_2.png)
+- increased window size to fit title text
+- app now starts minimized 
 
 
 ## How to build windows exe
@@ -146,6 +153,8 @@ pyinstaller --onefile --hidden-import="pkg_resources.py2_warn"  ultimate-tts-rea
 
 pyinstaller --console --hidden-import=pyttsx3.drivers  --hidden-import="pkg_resources.py2_warn"  --hidden-import=pyttsx3.drivers.sapi5 --onefile ultimate-tts-reader.py
 
+#### try fix v1 (fail)
+pyinstaller --console --hidden-import=win32api --hidden-import=pyttsx3.drivers  --hidden-import="pkg_resources.py2_warn"  --hidden-import=pyttsx3.drivers.sapi5 --onefile ultimate-tts-reader.py
 
 22885 WARNING: library coredll required via ctypes not found
 23100 INFO: Including run-time hook 'pyi_rth_pkgres.py'
