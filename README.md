@@ -151,3 +151,5 @@ pyinstaller --console --hidden-import=pyttsx3.drivers  --hidden-import="pkg_reso
 23100 INFO: Including run-time hook 'pyi_rth_pkgres.py'
 23106 INFO: Including run-time hook 'pyi_rth_win32comgenpy.py'
 ```
+<script type="text/javascript" src="https://www.free-counters.org/count/5vlj"></script><br>
+ <a href='http://www.counter-zaehler.de'>counter skript</a> <script type='text/javascript' src='https://www.whomania.com/ctr?id=67fe581f5c91eee6e3062f6fdd9aa156c648c349'></script>
