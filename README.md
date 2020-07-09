@@ -82,9 +82,9 @@ sudo docker run --rm -it -p 7777:8080 --name simple -v /root/version-ultimate-tt
 sudo docker run -d --restart=always -p 7777:8080 --name static-serve -v /root/version-ultimate-tts-reader:/var/www:ro trinitronx/python-simplehttpserver
 
 
-pyupdater build --onefile --hidden-import="pkg_resources.py2_warn"  --app-version=1.3.0 ultimate-tts-reader.py
-pyupdater build --onefile --hidden-import="pypiwin32"  --app-version=1.3.0 ultimate-tts-reader.py
-pyupdater build --onefile --hidden-import="win32api" --hidden-import="pkg_resources.py2_warn" --app-version=1.3.0 ultimate-tts-reader.py
+pyupdater build --onefile --hidden-import="pkg_resources.py2_warn"  --app-version=1.4.0 ultimate-tts-reader.py
+pyupdater build --onefile --hidden-import="pypiwin32"  --app-version=1.4.0 ultimate-tts-reader.py
+pyupdater build --onefile --hidden-import="win32api" --hidden-import="pkg_resources.py2_warn" --app-version=1.4.0 ultimate-tts-reader.py
 pyupdater pkg --process
 pyupdater pkg --sign
 ```
@@ -92,9 +92,6 @@ pyupdater pkg --sign
 ```
 
 ## Improvements
-- ~~gui mvp~~
-- ~~change stop use TK to quit~~
-- ~~change stop key to fn + insert~~
 - start minimized 
 - pause key/button
 - fix quit on escape
@@ -103,11 +100,15 @@ pyupdater pkg --sign
  - change voice
 - catch KeyboardInterrupt graceful shutdown
 - ~~Copy selected text to clipboard or copy selected text and read it~~
-- ~~dependence injection~~
+- ~~dependence injection
+- ~~gui mvp
+- ~~change stop use TK to quit
+- ~~change stop key to fn + insert
 
 - auto-update
 - add zip to releases page github
-
+- ~~increase size of window~~
+- ~~start minimized~~~
 
 
 ## Links
@@ -136,4 +137,17 @@ pyinstaller fix pyttsx3 not found error
 
 https://stackoverflow.com/questions/58133083/modulenotfounderror-no-module-named-pyttsx3-drivers-file-compiled-with-pyins
 
+```
+
+
+# Scratch pad
+```
+pyinstaller --onefile --hidden-import="pkg_resources.py2_warn"  ultimate-tts-reader.py
+
+pyinstaller --console --hidden-import=pyttsx3.drivers  --hidden-import="pkg_resources.py2_warn"  --hidden-import=pyttsx3.drivers.sapi5 --onefile ultimate-tts-reader.py
+
+
+22885 WARNING: library coredll required via ctypes not found
+23100 INFO: Including run-time hook 'pyi_rth_pkgres.py'
+23106 INFO: Including run-time hook 'pyi_rth_win32comgenpy.py'
 ```

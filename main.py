@@ -23,8 +23,8 @@ def on_press(key):
             print("Pressed escape")
             engine.stop()
     except AttributeError:
-        print('special key {0} pressed'.format(
-            key))
+        print(".")
+        # print('special key {0} pressed'.format(key))
 
 # when kill key is pressed the event handler is killed.
 # this is done by returning "False"

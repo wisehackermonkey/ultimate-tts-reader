@@ -11,9 +11,10 @@ import os
 
 # location of server address, app version number
 from client_config import ClientConfig
+import pkg_resources.py2_warn
 
 # download and update app to new version
-import update 
+from update import check_for_update 
 
 # class uses threading to isolate 
 # the tkinter mainloop from my tts loop
@@ -40,11 +41,14 @@ class App(threading.Thread):
     def run(self):
         self.root = tk.Tk()
 
+        # start application minimized
+        self.root.iconify()
+
         # set window name 
         self.root.title("Ultimate TTS Reader")
 
         #set minimum window size
-        self.root.minsize(100,50)
+        self.root.minsize(275,50)
 
         # setup quit callback on windows close
         self.root.protocol("WM_DELETE_WINDOW", self.close_window)
@@ -67,7 +71,7 @@ class App(threading.Thread):
         self.filemenu = tk.Menu(self.root,tearoff=0)
 
 
-        self.filemenu.add_command(label="Update", command=update.check_for_update)
+        self.filemenu.add_command(label="Update", command=check_for_update)
         self.filemenu.add_command(label="Exit", command=self.close_window)
 
         self.menubar.add_cascade(label="Options", menu=self.filemenu)

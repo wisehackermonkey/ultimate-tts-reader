@@ -42,10 +42,11 @@ class TTS():
     def on_press(self,key):
         try:
             if key == key.insert:
-                print("reading clipboard")
+                print("\nreading clipboard")
                 self.engine.say(pyperclip.paste())
 
         except AttributeError:
-            print(f'special key {key} pressed')
+            print("." , end="")
+            # print(f'special key {key} pressed')
     def onError(self):
         print("error occurred")

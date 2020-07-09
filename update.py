@@ -19,6 +19,7 @@ from pyupdater.client import Client, AppUpdate, LibUpdate
 # goes to webserver grabs newest version of app and
 # replaces the exe with the new one
 def check_for_update():
+    print("[check_for_update]")
     logging.basicConfig(level=logging.DEBUG)
 
     client = Client(ClientConfig(), refresh=True)

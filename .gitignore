@@ -129,3 +129,4 @@ keypack.pyu
 pyu.log
 pyu-data
 builds
+.vscode/settings.json

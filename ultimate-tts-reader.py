@@ -1,9 +1,9 @@
 # class handles keyboard input and reading of the text
 from tts import TTS
-import pkg_resources.py2_warn
 
 # custom gui script for generating tkinter
 # windows containing play and quit buttons
+
 from gui import App
 
 
