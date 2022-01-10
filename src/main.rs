@@ -1,72 +1,36 @@
+// use std::sync::Arc;
+// use std::thread;
+// use tts::*;
+
+// fn tts_rust(text: &str) -> Result<(), Error> {
+//     Ok(())
+// }
+
+// fn main() -> Result<(), Error> {
+//     let stack = vec!["wow", "rust", "is", "awesome"];
+
+//     // loop {
+//         let text = stack[0];
+//         let mut tts = Tts::default()?;
+//         tts.speak(text, false)?;
+//     // }
+//     Ok(())
+// }
+use std::{thread, time};
+use std::sync::Arc;
+use tts::*;
 use std::io;
 use inputbot::{BlockInput::*, KeybdKey::*, MouseButton::*, *};
-use std::{thread::sleep, time::Duration};
-use tts::*;
-use tts::*;
-fn text_to_speech(text: &str)  -> Result<(), Error>  {
-    let mut tts = Tts::default()?;
-    tts.speak(text,false);
-    Ok(())
-}
 fn main() -> Result<(), Error> {
-    // env_logger::init();
-    let  mut tts = Tts::default().unwrap(); 
-    tts.speak("wow",false).unwrap(); 
-
-    println!("Press Enter and wait for speech.");
-      InsertKey.bind(|| { 
-          println!("Insert Key");
-          let  mut tts = Tts::default().unwrap(); 
-          tts.speak("wow".to_owned(),false).unwrap(); 
-        
-});
-    // loop {
-    //     let mut _input = String::new();
-    //     io::stdin().read_line(&mut _input)?;
-    //     tts.speak("Hello, world.", true)?;
-    // }
+     let mut tts = Tts::default()?;
+ 
     inputbot::handle_input_events();
     handle_input_events();
-    Ok(())
+    loop { 
+        tts.speak(format!("Phrase {}", local), true)?;
+        let time = time::Duration::from_secs(5);
+        thread::sleep(time);
+        println!("local {}", local);
+        // local += 1;
+    }
 }
-// use inputbot::{BlockInput::*, KeybdKey::*, MouseButton::*, *};
-// use std::{thread::sleep, time::Duration};
-// use tts::*;
-// use std::io;
-// fn main() {
-//     // env_logger::init();
-//     let mut tts = Tts::default();
-//     tts.speak("Insert + left shift", true);
-
-//     InsertKey.bind(|| println!("Insert"));
-//     // Autorun for videogames.
-//     LShiftKey.bind(|| {
-//         while InsertKey.is_pressed() {
-//             println!("Insert + left shift");
-//             tts.speak("Insert + left shift", true);
-//         }
-//     });
-
-     
-
-//     inputbot::handle_input_events();
-     
-//     InsertKey.blockable_bind(|| {
-//         if LShiftKey.is_pressed() {
-//             Block
-//         } else {
-//             DontBlock
-//         }
-//     });
-
-//     // Block the A key when left shift is held.
-//     KKey.block_bind(|| ());
-
-//     // Call this to start listening for bound inputs.
-//     handle_input_events();
-//     //     loop {
-// //         let mut _input = String::new();
-// //         io::stdin().read_line(&mut _input)?;
-// //         tts.speak("Hello, world.", true)?;
-// //     }
-// }
