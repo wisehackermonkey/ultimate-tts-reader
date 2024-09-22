@@ -6,8 +6,7 @@ github.com/wisehackermonkey
 oranbusiness@gmail.com
 20200415
 ```
-![Screenshot_1](https://i.imgur.com/lhVK1NM.jpg)
-# Install
+ # Install
 
 > Prebuilt windows binaries are avaiable under releases 
 
@@ -21,17 +20,16 @@ cd ultimate-tts-reader
 pip install -r requirements.txt
 ```
 
+# Devlopment
 # how to run 
 
 #### windows only
 ```
-python ./main.py
+python ./ultimate-tts-reader.py
 ```
 ## Useage
 ```
-copy something to the clipboard
-press 'insert' on the keyboard
-the computer should read the text to you!
+
 ```
 # Dev Log updates
 
@@ -54,48 +52,13 @@ cd /path/to/project
 ```
 pyinstaller --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --noconsole --onefile ultimate-tts-reader.py
 ```
-### clean build 
+
+# Dev v2 rebuild as tray
 ```
-pyinstaller --noconsole --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile ultimate-tts-reader.py 
-```
-### Advanced (windows powershell) Build, move exe  to to windows folder, includes moving of build files to ./builds 
-```
-add move to windows folder 
-NOTE mv -force overwrites the exe (and is a powershell command)
-
-> pyinstaller --noconsole --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile ultimate-tts-reader.py ; mv -force ${PWD}/builds/dist/ultimate-tts-reader.exe ${PWD}/windows/ultimate-tts-reader.exe
-```
-
-### Advanced (plus zip) (windows powershell) 
-```
-> pyinstaller --noconsole --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sapi5 --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile ultimate-tts-reader.py ; mv -force ${PWD}/builds/dist/ultimate-tts-reader.exe ${PWD}/windows/ultimate-tts-reader.exe ; $date = Get-Date -Format "yyyyMMdd"; Compress-Archive -force -Path ${PWD}/windows/ultimate-tts-reader.exe -DestinationPath ${PWD}/windows/ultimate-tts-reader_windows_${date}.zip
-
-
-### Auto update setup
-```
-pyupdater init 
-    copy key 'keypack.pyu'
-pyupdater keys -i  
-pyupdater settings --plugin scp    
-```
-### Auto update build and push
-```bash
-
-on remote server
-(TESTING)
-sudo docker run --rm -it -p 7777:8080 --name simple -v /root/version-ultimate-tts-reader:/var/www:ro trinitronx/python-simplehttpserver
-
-(deployment)
-sudo docker run -d --restart=always -p 7777:8080 --name static-serve -v /root/version-ultimate-tts-reader:/var/www:ro trinitronx/python-simplehttpserver
-
-
-pyupdater build --onefile --hidden-import="pkg_resources.py2_warn"  --app-version=1.4.0 ultimate-tts-reader.py
-pyupdater build --onefile --hidden-import="pypiwin32"  --app-version=1.4.0 ultimate-tts-reader.py
-pyupdater build --onefile --hidden-import="win32api" --hidden-import="pkg_resources.py2_warn" --app-version=1.4.0 ultimate-tts-reader.py
-pyupdater pkg --process
-pyupdater pkg --sign
-```
-
+python -m venv ./python
+./python/Scripts/activate
+pip install Pillow pystray
+python ultimate_tts.py
 ```
 
 ## Improvements
@@ -119,7 +82,7 @@ pyupdater pkg --sign
 
 
 ## Links
-```
+
 tts
 https://pyttsx3.readthedocs.io/en/latest/engine.html#examples
 
@@ -135,30 +98,5 @@ https://docs.python.org/3/library/tkinter.html
 Pyinstaller
 https://pyinstaller.readthedocs.io/en/stable/usage.html
 
-pyinstaller fix output file destination
-Python: how to specify output folders in Pyinstaller .spec file
-https://stackoverflow.com/questions/37319911/python-how-to-specify-output-folders-in-pyinstaller-spec-file
-
-pyinstaller fix pyttsx3 not found error
-> pyinstaller --hidden-import=pyttsx3.drivers song_dl.py
-
-https://stackoverflow.com/questions/58133083/modulenotfounderror-no-module-named-pyttsx3-drivers-file-compiled-with-pyins
-
-```
-
-
-# Scratch pad
-```
-pyinstaller --onefile --hidden-import="pkg_resources.py2_warn"  ultimate-tts-reader.py
-
-pyinstaller --console --hidden-import=pyttsx3.drivers  --hidden-import="pkg_resources.py2_warn"  --hidden-import=pyttsx3.drivers.sapi5 --onefile ultimate-tts-reader.py
-
-#### try fix v1 (fail)
-pyinstaller --console --hidden-import=win32api --hidden-import=pyttsx3.drivers  --hidden-import="pkg_resources.py2_warn"  --hidden-import=pyttsx3.drivers.sapi5 --onefile ultimate-tts-reader.py
-
-22885 WARNING: library coredll required via ctypes not found
-23100 INFO: Including run-time hook 'pyi_rth_pkgres.py'
-23106 INFO: Including run-time hook 'pyi_rth_win32comgenpy.py'
-```
 <script type="text/javascript" src="https://www.free-counters.org/count/5vlj"></script><br>
  <a href='http://www.counter-zaehler.de'>counter skript</a> <script type='text/javascript' src='https://www.whomania.com/ctr?id=67fe581f5c91eee6e3062f6fdd9aa156c648c349'></script>
