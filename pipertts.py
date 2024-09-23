@@ -2,16 +2,19 @@ import os
 import tempfile
 import subprocess
 import shutil
+import time
 import winsound
 import threading
 from pathlib import Path
 import sys
 import pyperclip
+import ctypes 
+from ctypes import wintypes
+import time 
+
+ 
+
 # from plyer import notification
-
-# Show a notification
-
-
 def show_error(txt, title="Error"):
     ctypes.windll.user32.MessageBoxW(0, txt, title, 1)
 
@@ -109,16 +112,46 @@ def play(text_input):
             print(f"An error occurred: {stderr}")
 
 def stop():
+
+    
     # current_folder = str(Path.cwd())
-    # print("Playback stopped.")
-    # python = sys.executable
-    # os.execl(python, python, * sys.argv)
-        # Get the current script path
-    script_path = os.path.abspath(sys.argv[0])
-    # Start a new process with the script path
-    subprocess.Popen([sys.executable, script_path] + sys.argv[1:])
-    # Exit the current process
-    sys.exit()
+    # # print("Playback stopped.")
+    # # python = sys.executable
+    # # os.execl(python, python, * sys.argv)
+    #     # Get the current script path
+    # script_path = os.path.join(current_folder,"pipertts.exe")
+    # # Start a new process with the script path
+    # try:
+    #     subprocess.Popen([sys.executable, script_path] + sys.argv[1:], start_new_session=True)
+    # # Exit the current process
+    #     time.sleep(2)
+    #     sys.exit()
+    # except Exception as e:
+    #     show_error("Error something crashed when i tried to reload", title="ERROR")
+    current_folder = os.getcwd()
+    script_path = os.path.join(current_folder, "pipertts.exe")
+    
+    # Get the current process ID
+    current_pid = os.getpid()
+    
+    # Start a new process
+    new_process = subprocess.Popen([sys.executable, script_path] + sys.argv[1:])
+    
+    # Sleep for a moment to allow the new process to start
+    time.sleep(2)
+    
+    # Check if the current process is still running
+    try:
+        # This will raise an OSError if the process is not running
+        os.kill(current_pid, 0)
+    except OSError:
+        # Current process is not running, safe to exit
+        sys.exit()
+    else:
+        # Current process is still running
+        print("Current process is still running. Exiting.")
+        sys.exit()
+
 
 def play_threaded(text_input):
     # Start the playback in a separate thread
@@ -126,15 +159,7 @@ def play_threaded(text_input):
     tts_thread.start()
 
 
-
-
-if __name__ == "__main__":
-    import ctypes 
-    from ctypes import wintypes
-    import time 
-
-    
-
+def main():
     if check_files():
         show_error("Attempting to download required files please wait...")
         setup_piper()
@@ -179,7 +204,16 @@ if __name__ == "__main__":
             time.sleep(2)
         if (ctrl_left_pressed or ctrl_right_pressed) and f2_pressed:
             print("stopping")
-
+            # time.sleep(3)
             stop()
         
         time.sleep(0.1)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt as e:
+        show_error("ERROR Keyboard interupt caused the program to crash please restart")
+
+    
