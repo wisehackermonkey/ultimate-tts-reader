@@ -76,14 +76,6 @@ current_process = None
 def play(text_input):
     global current_process
 
-    # Get the current script directory
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-
-
- 
-
-    # Piper command without echo (we'll provide the text directly via stdin)
-
     # Using TemporaryDirectory to hold temporary files if needed
     with tempfile.TemporaryDirectory() as temp_folder:
         # Construct the Piper executable path
