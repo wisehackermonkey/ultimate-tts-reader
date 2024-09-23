@@ -143,8 +143,11 @@ if __name__ == "__main__":
     
     # Call the function
     VK_F2 = 0x71  # Virtual key code for F2
+    VK_F3 = 0x72  # Virtual key code for F2
     VK_LMENU = 0xA4  # Virtual key code for Left Alt
     VK_RMENU = 0xA5  # Virtual key code for Right Alt
+    VK_LCONTROL = 0xA2  # Virtual key code for Left Control
+    VK_RCONTROL = 0xA3  # Virtual key code for Right Control
 
     user32 = ctypes.windll.user32
 
@@ -154,6 +157,8 @@ if __name__ == "__main__":
     while True:
         alt_left_pressed = is_key_pressed(VK_LMENU)
         alt_right_pressed = is_key_pressed(VK_RMENU)
+        ctrl_left_pressed = is_key_pressed(VK_LCONTROL)
+        ctrl_right_pressed = is_key_pressed(VK_RCONTROL)
         f2_pressed = is_key_pressed(VK_F2)
         print(".", end="")
         if alt_left_pressed:
@@ -163,12 +168,16 @@ if __name__ == "__main__":
             
         if f2_pressed:
             print("f")
-        if (alt_left_pressed) and f2_pressed:
+
+        if (ctrl_left_pressed or ctrl_right_pressed):
+            print("c")
+        if (alt_left_pressed or alt_right_pressed) and f2_pressed:
 
         # if (alt_left_pressed or alt_right_pressed) and f2_pressed:
             print("ALT + f2 is pressed!")
             play_threaded(pyperclip.paste())
-        if (alt_right_pressed) and f2_pressed:
+            time.sleep(2)
+        if (ctrl_left_pressed or ctrl_right_pressed) and f2_pressed:
             print("stopping")
 
             stop()
