@@ -90,7 +90,17 @@ echo "goodbye world" | ./piper/piper.exe --cuda --model voices\en_US-hfc_female-
 - ~~increase size of window~~
 - ~~start minimized~~~
 
-
+20240923
+- pyinstaller
+- move key to ctrl + f2 
+- add tray version
+- click for play
+- monitor ctrl+c
+- auto install piper-tss from github
+- fix temp folder remove after finish
+- fix name conflict add epoc time
+- remove print statements
+- show error if thing not found
 ## Links
 
 tts
