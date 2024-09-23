@@ -101,6 +101,9 @@ echo "goodbye world" | ./piper/piper.exe --cuda --model voices\en_US-hfc_female-
 - fix name conflict add epoc time
 - remove print statements
 - show error if thing not found
+
+
+- split the text into chunks and play them 
 ## Links
 
 tts
