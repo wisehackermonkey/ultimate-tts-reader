@@ -57,8 +57,18 @@ pyinstaller --hidden-import=pyttsx3.drivers  --hidden-import=pyttsx3.drivers.sap
 ```
 python -m venv ./python
 ./python/Scripts/activate
-pip install Pillow pystray
+pip install Pillow pystray 
+curl -o  piper.zip  https://github.com/rhasspy/piper/releases/download/2023.11.14-2/piper_windows_amd64.zip
+python -m zipfile -e piper.zip ./
+./piper/piper.exe --help
 python ultimate_tts.py
+```
+
+# testing piper-tts
+```
+echo "goodbye world" | ./piper/piper.exe --model voices\en_US-hfc_female-medium.onnx --output_file goodbye.wav
+# with cuda
+echo "goodbye world" | ./piper/piper.exe --cuda --model voices\en_US-hfc_female-medium.onnx --output_file goodbye.wav
 ```
 
 ## Improvements
